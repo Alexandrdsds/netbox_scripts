@@ -102,7 +102,7 @@ def create_devices():
     
     ]
     for device_info in devices_info:
-        device_type = nb.dcim.device_types.get(slug=device_info['device_type'].replace(' ','-').lower())
+        device_type = nb.dcim.device_types.get(slug=device_info['device_type'].replace(' ','-').lower().translate({ord(i): None for i in '+'}))
         device_role = nb.dcim.device_roles.get(slug=device_info['device_role'].replace(' ','-').lower())
         site = nb.dcim.sites.get(slug=device_info['site'])
         location = nb.dcim.locations.get(name=device_info['location'].upper())
