@@ -13,14 +13,15 @@ def create_connections(switches,commands,descriptions):
                 'host': switch,
                 'username': 'nadubov',
                 'password': 'Wanga15',
-                'secret': 'Wanga15',
+                'secret': 'Qq123456',
                 'port': 22,
                 }
             ssh = ConnectHandler(**cisco_router)
-            for description, command in zip(descriptions, commands):   
+            for description, command in zip(descriptions, commands): 
+                ssh.enable()  
                 result = ssh.send_command(command)
                 with open(f"C:\\Users\\grink\\test_script\\{description}_{switch}.txt", 'w') as f:
-                    f.write(result)
+                    f.write(result.rstrip())
     except:
         print(f"Unable to connect to the Device {switch}")
         
